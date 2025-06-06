@@ -1,0 +1,583 @@
+/* Import theme styles */
+@import url('/themes/default.css');
+@import url('/themes/dark.css');
+@import url('/themes/nature.css');
+@import url('/themes/ocean.css');
+
+/* Neubrutalist Variables */
+:root {
+    --primary-color: #FF90E8;
+    --secondary-color: #FBF2FF;
+    --accent-color: #00FF00;
+    --black: #000000;
+    --white: #ffffff;
+    --shadow-offset: 4px;
+    --window-header-height: 40px;
+    --win98-teal: #008080;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Desktop Background */
+body {
+    font-family: 'Space Grotesk', 'Helvetica Neue', sans-serif;
+    min-height: 100vh;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background-color: var(--win98-teal);
+    background-image: 
+        linear-gradient(45deg, rgba(0, 0, 0, 0.1) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(0, 0, 0, 0.1) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, rgba(0, 0, 0, 0.1) 75%),
+        linear-gradient(-45deg, transparent 75%, rgba(0, 0, 0, 0.1) 75%);
+    background-size: 4px 4px;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease-in;
+}
+
+body.loaded {
+    opacity: 1;
+}
+
+/* Desktop Icon Container */
+.desktop-icon {
+    display: none;
+}
+
+/* Remove icon */
+body::before {
+    display: none;
+}
+
+/* Remove icon text */
+body::after {
+    display: none;
+}
+
+/* Window Container */
+.container {
+    width: min(100%, 1200px);
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    background-color: var(--white);
+    border: 3px solid var(--black);
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--black);
+    position: relative;
+    min-height: min-content;
+    max-height: 90vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+/* Window Header */
+.container::before {
+    content: 'POMODORO.EXE';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--window-header-height);
+    background-color: var(--primary-color);
+    border-bottom: 3px solid var(--black);
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+}
+
+/* Window Controls */
+.container::after {
+    content: '_ □ X';
+    position: absolute;
+    top: 0;
+    right: 1rem;
+    height: var(--window-header-height);
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-family: monospace;
+    font-size: 1.2rem;
+    letter-spacing: 4px;
+}
+
+/* Main Content Area */
+.timer-section,
+.content-section {
+    margin-top: var(--window-header-height);
+    padding: 2rem;
+}
+
+/* Timer Section */
+.timer-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 2rem;
+    background-color: var(--primary-color);
+    border: 3px solid var(--black);
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--black);
+}
+
+.progress-ring {
+    width: 100%;
+    max-width: 600px;
+    aspect-ratio: 1;
+}
+
+.progress-ring svg {
+    width: 100%;
+    height: auto;
+}
+
+.circle-container {
+    transform: rotate(-90deg);
+    transform-origin: center;
+}
+
+.progress-ring__circle-bg {
+    fill: none;
+    stroke: var(--black);
+    stroke-width: 10;
+}
+
+.progress-ring__circle {
+    fill: none;
+    stroke: var(--accent-color);
+    stroke-width: 10;
+    stroke-linecap: square;
+    transition: stroke-dashoffset 0.3s ease;
+}
+
+.timer-text {
+    font-size: 3.5rem;
+    font-weight: bold;
+    font-family: 'Space Grotesk', monospace;
+    fill: var(--black);
+}
+
+.mode-text {
+    font-size: 1rem;
+    font-family: 'Space Grotesk', monospace;
+    fill: var(--black);
+    font-weight: bold;
+}
+
+/* Content Section */
+.content-section {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+    background-color: var(--accent-color);
+    border: 3px solid var(--black);
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--black);
+}
+
+.image-container {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    border: 3px solid var(--black);
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--black);
+}
+
+.feature-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    filter: grayscale(0.2) contrast(1.1);
+}
+
+.motivation-text {
+    padding: 1rem;
+    background-color: var(--white);
+    border: 3px solid var(--black);
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--black);
+}
+
+.motivation-text h2 {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--black);
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+}
+
+/* Controls */
+.controls {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.control-button {
+    width: 80px;
+    height: 80px;
+    border: 3px solid var(--black);
+    background-color: var(--white);
+    font-size: 1.8rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--black);
+    transition: all 0.1s ease;
+    color: var(--black);
+}
+
+.control-button:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: calc(var(--shadow-offset) + 2px) calc(var(--shadow-offset) + 2px) 0 var(--black);
+}
+
+.control-button:active {
+    transform: translate(2px, 2px);
+    box-shadow: calc(var(--shadow-offset) - 2px) calc(var(--shadow-offset) - 2px) 0 var(--black);
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.modal-content {
+    position: relative;
+    margin: 15% auto;
+    padding: 2rem;
+    width: 90%;
+    max-width: 500px;
+    background-color: var(--white);
+    border: 3px solid var(--black);
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--black);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 3px solid var(--black);
+    padding-bottom: 1rem;
+}
+
+.modal-header h2 {
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+}
+
+.close-modal {
+    font-size: 28px;
+    font-weight: bold;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--black);
+}
+
+.settings-section {
+    margin-bottom: 20px;
+}
+
+.settings-section h3 {
+    margin-bottom: 15px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+}
+
+select {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--white);
+    border: 3px solid var(--black);
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--black);
+    margin-bottom: 1rem;
+}
+
+/* Loading Screen */
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--secondary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.3s ease-out;
+}
+
+.loading-screen.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.loading-spinner {
+    width: 80px;
+    height: 80px;
+    border: 8px solid var(--black);
+    border-top-color: var(--primary-color);
+    border-radius: 0;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+    body {
+        padding: 1rem;
+    }
+    
+    .container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 2rem;
+        margin: 1rem auto;
+        max-height: none;
+        overflow-y: visible;
+        width: min(100%, 800px);
+    }
+
+    .progress-ring {
+        max-width: 400px;
+    }
+
+    .timer-text {
+        font-size: 2.8rem;
+    }
+
+    .image-container {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .motivation-text h2 {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .progress-ring {
+        max-width: 300px;
+    }
+
+    .timer-text {
+        font-size: 2.2rem;
+    }
+
+    .control-button {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+
+    .image-container {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+/* Todo Window Styles */
+.todo-window {
+    position: fixed;
+    top: calc(50vh - 50%);
+    right: 2rem;
+    width: 400px;
+    height: auto;
+    background-color: var(--white);
+    border: 3px solid var(--black);
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--black);
+    z-index: 100;
+}
+
+.window-header {
+    background-color: var(--primary-color);
+    border-bottom: 3px solid var(--black);
+    padding: 0.5rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: var(--window-header-height);
+}
+
+.window-title {
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+}
+
+.window-controls {
+    font-weight: bold;
+    font-family: monospace;
+    font-size: 1.2rem;
+    letter-spacing: 4px;
+    pointer-events: none;
+}
+
+/* Remove the old button styles */
+.window-controls button {
+    display: none;
+}
+
+.window-content {
+    padding: 1rem;
+}
+
+.todo-input-container {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+#todoInput {
+    flex: 1;
+    padding: 0.5rem;
+    border: 3px solid var(--black);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1rem;
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--black);
+}
+
+.add-todo-btn {
+    padding: 0.5rem 1rem;
+    background-color: var(--accent-color);
+    border: 3px solid var(--black);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--black);
+    white-space: nowrap;
+}
+
+.add-todo-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: calc(var(--shadow-offset) + 2px) calc(var(--shadow-offset) + 2px) 0 var(--black);
+}
+
+.add-todo-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: calc(var(--shadow-offset) - 2px) calc(var(--shadow-offset) - 2px) 0 var(--black);
+}
+
+.todo-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    background-color: var(--secondary-color);
+    border: 3px solid var(--black);
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--black);
+}
+
+.todo-checkbox {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--black);
+    background-color: var(--white);
+    cursor: pointer;
+    position: relative;
+}
+
+.todo-checkbox.checked::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    color: var(--black);
+}
+
+.todo-text {
+    flex: 1;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.todo-text.completed {
+    text-decoration: line-through;
+    opacity: 0.7;
+}
+
+.delete-todo {
+    background-color: var(--primary-color);
+    border: 2px solid var(--black);
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 2px 2px 0 var(--black);
+}
+
+.delete-todo:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0 var(--black);
+}
+
+.delete-todo:active {
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0 var(--black);
+}
+
+/* Responsive Todo Window */
+@media (max-width: 1200px) {
+    .todo-window {
+        position: static;
+        transform: none;
+        width: min(100%, 800px);
+        margin: 2rem auto;
+    }
+}
