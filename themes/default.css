@@ -1,0 +1,45 @@
+/* Default Theme */
+body.theme-default {
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+.theme-default .progress-ring__circle {
+    stroke: #4CAF50;
+}
+
+.theme-default .progress-ring__circle-bg {
+    stroke: #e0e0e0;
+}
+
+.theme-default .timer-text {
+    fill: #2c3e50;
+}
+
+.theme-default .mode-text {
+    fill: #666;
+}
+
+.theme-default .control-button {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.theme-default .control-button:hover {
+    background-color: #45a049;
+}
+
+.theme-default .modal-content {
+    background-color: #fff;
+    color: #333;
+}
+
+.theme-default select {
+    background-color: #fff;
+    color: #333;
+    border-color: #ddd;
+}
+
+.theme-default .music-button {
+    color: #4CAF50;
+} 

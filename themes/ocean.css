@@ -1,0 +1,38 @@
+/* Ocean Theme */
+body.theme-ocean {
+    background-color: #e6f3f8;
+    color: #2c3e50;
+}
+
+.theme-ocean .progress-ring__circle {
+    stroke: #4a90e2;
+}
+
+.theme-ocean .progress-ring__circle-bg {
+    stroke: #e0e0e0;
+}
+
+.theme-ocean .timer-text {
+    fill: #2c3e50;
+}
+
+.theme-ocean .mode-text {
+    fill: #666;
+}
+
+.theme-ocean .control-button {
+    background-color: #4a90e2;
+}
+
+.theme-ocean .control-button:hover {
+    background-color: #357abd;
+}
+
+.theme-ocean .modal-content {
+    background-color: #fff;
+    border: 1px solid #4a90e2;
+}
+
+.theme-ocean .music-button {
+    color: #4a90e2;
+} 

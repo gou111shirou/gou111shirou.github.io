@@ -1,0 +1,44 @@
+/* Dark Theme */
+body.theme-dark {
+    background-color: #1a1a1a;
+    color: #fff;
+}
+
+.theme-dark .progress-ring__circle {
+    stroke: #7289da;
+}
+
+.theme-dark .progress-ring__circle-bg {
+    stroke: #404040;
+}
+
+.theme-dark .timer-text {
+    fill: #fff;
+}
+
+.theme-dark .mode-text {
+    fill: #bbb;
+}
+
+.theme-dark .control-button {
+    background-color: #7289da;
+}
+
+.theme-dark .control-button:hover {
+    background-color: #6277c4;
+}
+
+.theme-dark .modal-content {
+    background-color: #2d2d2d;
+    color: #fff;
+}
+
+.theme-dark select {
+    background-color: #404040;
+    color: #fff;
+    border-color: #666;
+}
+
+.theme-dark .music-button {
+    color: #7289da;
+} 

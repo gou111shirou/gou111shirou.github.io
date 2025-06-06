@@ -1,0 +1,22 @@
+{
+    "default": {
+        "name": "Default",
+        "featureImage": "https://static.scientificamerican.com/sciam/cache/file/1DDFE633-2B85-468D-B28D05ADAE7D1AD8_source.jpg?w=1200",
+        "music": null
+    },
+    "dark": {
+        "name": "Dark Focus",
+        "featureImage": "https://images.unsplash.com/photo-1519681393784-d120267933ba",
+        "music": "/music/rain-and-thunder.mp3"
+    },
+    "nature": {
+        "name": "Nature Focus",
+        "featureImage": "https://images.unsplash.com/photo-1501854140801-50d01698950b",
+        "music": "/music/forest-stream.mp3"
+    },
+    "ocean": {
+        "name": "Ocean Focus",
+        "featureImage": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
+        "music": "/music/ocean-waves.mp3"
+    }
+} 

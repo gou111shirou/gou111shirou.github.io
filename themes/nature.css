@@ -1,0 +1,38 @@
+/* Nature Theme */
+body.theme-nature {
+    background-color: #f0f7f0;
+    color: #2c3e50;
+}
+
+.theme-nature .progress-ring__circle {
+    stroke: #68b168;
+}
+
+.theme-nature .progress-ring__circle-bg {
+    stroke: #e0e0e0;
+}
+
+.theme-nature .timer-text {
+    fill: #2c3e50;
+}
+
+.theme-nature .mode-text {
+    fill: #666;
+}
+
+.theme-nature .control-button {
+    background-color: #68b168;
+}
+
+.theme-nature .control-button:hover {
+    background-color: #5a9c5a;
+}
+
+.theme-nature .modal-content {
+    background-color: #fff;
+    border: 1px solid #68b168;
+}
+
+.theme-nature .music-button {
+    color: #68b168;
+} 
